@@ -1,0 +1,317 @@
+
+        /* Estilos mejorados y optimizados */
+        :root {
+            --sidebar-width: 280px;
+            --sidebar-collapsed: 0px;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+
+        /* Sidebar mejorado con Bootstrap */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: white;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.08);
+            z-index: 1040;
+            transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(calc(-1 * var(--sidebar-width)));
+        }
+
+        /* Main content wrapper */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            transition: margin-left var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-wrapper.expanded {
+            margin-left: 0;
+        }
+
+        /* Overlay mejorado */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1039;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* Cards con efecto glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Botones con efectos mejorados */
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6, #4f46e5);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+
+        .btn-gradient:active {
+            transform: translateY(0);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Toast notifications mejorado */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1060;
+        }
+
+        .toast-custom {
+            animation: slideInRight 0.4s ease-out;
+            min-width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Scrollbar personalizado */
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Mejoras responsivas */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(calc(-1 * var(--sidebar-width)));
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-wrapper {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
+
+        /* Mejoras para inputs y formularios */
+        .form-control:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Badges y etiquetas mejoradas */
+        .badge-soft {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* Transiciones suaves para todos los elementos */
+        .transition-smooth {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Hover effects para elementos de menú */
+        .menu-item {
+            transition: all 0.2s ease;
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .menu-item.active {
+            background: rgba(59, 130, 246, 0.1);
+            color: #2563eb;
+        }
+
+        /* Modal mejorado con Bootstrap */
+        .modal-content {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1.5rem 1.5rem 1rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        /* Stats cards mejorados */
+        .stat-card {
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Progress bar mejorado */
+        .progress-custom {
+            height: 8px;
+            border-radius: 4px;
+            background: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .progress-custom .progress-bar {
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        /* Utility classes */
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+       /* Estilos para el acordeón */
+.accordion-item {
+    background: transparent;
+    border: none;
+}
+
+.accordion-collapse {
+    transition: height 0.3s ease;
+}
+
+.accordion-collapse.collapse:not(.show) {
+    display: none;
+}
+
+.accordion-collapse.collapsing {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.accordion-collapse.show {
+    display: block !important; /* Forzar visualización */
+}
+
+/* Asegurar que los submenús sean visibles */
+.accordion-collapse .menu-item {
+    display: flex !important;
+}
+
+/* Estilo para cuando el acordeón está abierto */
+.accordion-collapse.show .menu-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Transición suave para los items del submenú */
+.accordion-collapse .menu-item {
+    transition: all 0.2s ease;
+    opacity: 0.9;
+}

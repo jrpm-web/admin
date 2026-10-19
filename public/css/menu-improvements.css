@@ -1,0 +1,432 @@
+/* ============================================
+   MENU IMPROVEMENTS - ESTILOS COMPLETOS
+   ============================================ */
+
+/* === SIDEBAR PRINCIPAL === */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    background: #ffffff;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+    z-index: 1040;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+/* === SIDEBAR OVERLAY === */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1039;
+    animation: fadeIn 0.3s ease;
+}
+
+/* === MAIN WRAPPER === */
+.main-wrapper {
+    margin-left: 280px;
+    padding: 20px;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+.main-wrapper.expanded {
+    margin-left: 0;
+}
+
+/* === ITEMS DEL MENÚ === */
+.menu-item {
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    color: #1e293b;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 0.15rem;
+    user-select: none;
+}
+
+.menu-item:hover {
+    background: #f1f5f9;
+    transform: translateX(4px);
+}
+
+.menu-item.active {
+    background: rgba(59, 130, 246, 0.08);
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.menu-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    height: calc(100% - 16px);
+    width: 3px;
+    background: #3b82f6;
+    border-radius: 0 2px 2px 0;
+}
+
+.menu-item .favorite-star {
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.menu-item:hover .favorite-star {
+    opacity: 1;
+}
+
+.menu-item .favorite-star:hover {
+    transform: scale(1.2);
+    color: #f59e0b !important;
+}
+
+/* === SUBMENÚS === */
+.submenu-item {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+    color: #475569;
+}
+
+.submenu-item:hover {
+    background: #f8fafc;
+    transform: translateX(2px);
+}
+
+/* === ANIMACIONES DE ACORDEÓN === */
+#facturasMenu,
+#proveedoresMenu,
+#inventarioMenu,
+#configuracionMenu,
+#reportesMenu,
+#herramientasMenu,
+#categoriasInvMenu,
+#productosInvMenu,
+#movimientosInvMenu,
+#reportesInvMenu {
+    animation: slideDown 0.3s ease-out;
+    transform-origin: top center;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scaleY(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.transition-smooth {
+    transition: transform 0.3s ease;
+}
+
+/* === FAVORITOS === */
+#favoritesContainer .badge {
+    transition: all 0.2s ease;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+}
+
+#favoritesContainer .badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* === BÚSQUEDA === */
+#menuSearch {
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+#menuSearch:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+#menuSearchResults {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: white;
+}
+
+#menuSearchResults > div {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+#menuSearchResults > div:hover {
+    background: #f1f5f9;
+}
+
+#menuSearchResults > div:last-child {
+    border-bottom: none;
+}
+
+/* === BADGES DINÁMICOS === */
+.badge-dynamic {
+    animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* === SCROLLBAR PERSONALIZADA === */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* === MENÚ CONTEXTUAL === */
+.custom-context-menu {
+    animation: contextFadeIn 0.15s ease;
+    border: 1px solid #e2e8f0;
+}
+
+@keyframes contextFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.custom-context-menu > div {
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background 0.15s ease;
+    font-size: 0.85rem;
+}
+
+.custom-context-menu > div:hover {
+    background: #f1f5f9;
+}
+
+.custom-context-menu hr {
+    margin: 0.25rem 0;
+}
+
+/* === NOTIFICACIONES === */
+.notification-popup {
+    animation: slideDown 0.3s ease;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+}
+
+.notification-popup > div {
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.notification-popup > div:hover {
+    background: #f8fafc;
+}
+
+.notification-popup > div:last-child {
+    border-bottom: none;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 85%;
+        max-width: 320px;
+    }
+    
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+    
+    .main-wrapper {
+        margin-left: 0;
+        padding: 12px;
+    }
+    
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* === MODO OSCURO === */
+.dark-mode .sidebar {
+    background: #1a1a2e;
+    border-right: 1px solid #2a2a4a;
+}
+
+.dark-mode .menu-item {
+    color: #e2e8f0;
+}
+
+.dark-mode .menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .menu-item.active {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+}
+
+.dark-mode #menuSearch {
+    background: #16213e;
+    border-color: #2a2a4a;
+    color: #e2e8f0;
+}
+
+.dark-mode #menuSearch::placeholder {
+    color: #64748b;
+}
+
+.dark-mode #menuSearchResults {
+    background: #1a1a2e;
+    border-color: #2a2a4a;
+}
+
+.dark-mode #menuSearchResults > div {
+    border-color: #2a2a4a;
+    color: #e2e8f0;
+}
+
+.dark-mode #menuSearchResults > div:hover {
+    background: #16213e;
+}
+
+.dark-mode .submenu-item {
+    color: #94a3b8;
+}
+
+.dark-mode .submenu-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.dark-mode .custom-context-menu {
+    background: #1a1a2e;
+    border-color: #2a2a4a;
+}
+
+.dark-mode .custom-context-menu > div:hover {
+    background: #16213e;
+}
+
+.dark-mode .notification-popup {
+    background: #1a1a2e;
+    border-color: #2a2a4a;
+}
+
+.dark-mode .notification-popup > div:hover {
+    background: #16213e;
+}
+
+.dark-mode .border-bottom {
+    border-color: #2a2a4a !important;
+}
+
+.dark-mode .border-top {
+    border-color: #2a2a4a !important;
+}
+
+/* === UTILIDADES === */
+.hover-bg-light:hover {
+    background: #f1f5f9;
+}
+
+.dark-mode .hover-bg-light:hover {
+    background: #16213e;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* === TOAST MEJORADO === */
+.toast-custom {
+    min-width: 300px;
+    border-radius: 0.75rem;
+    border-left: 4px solid #3b82f6;
+}
+
+.toast-custom.success {
+    border-left-color: #22c55e;
+}
+
+.toast-custom.error {
+    border-left-color: #ef4444;
+}
+
+.toast-custom.warning {
+    border-left-color: #f59e0b;
+}
+
+.toast-custom.info {
+    border-left-color: #3b82f6;
+}
+
+/* === INDICADOR DE PÁGINA === */
+#currentPageIndicator {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    background: #f1f5f9;
+    border-radius: 0.5rem;
+}
+
+.dark-mode #currentPageIndicator {
+    background: #16213e;
+    color: #94a3b8;
+}
